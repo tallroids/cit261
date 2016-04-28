@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <title>Conditional Statements</title>
+    <script type="text/javascript">
+        var i = 10;
+        var v = 20;
+
+        function conditional() {
+            //happy if
+            if (i < 15 || i > 20) {
+                var out = i + 10;
+            }
+            //nasty ifs
+            //impossible condition
+            if (i < 15 && i > 20) {
+                var out = i + 10;
+            }
+            //incorrect comparison
+            if (i < 15 || i < 20) {
+                var out = i + 10;
+            }
+            //inadvertent test faliure
+            if (i < 15 ^ v == 20) {
+                var out = i + 10;
+            }
+
+            //happy if else
+            if (i < 15) {
+                var out = i + 10;
+            } else {
+                var out = i - 10;
+            }
+            //nasty if else
+            //var out not defined in second block
+            if (i < 15) {
+                var out = i + 10;
+            } else {
+                out = i - 10;
+            }
+            //happy nested if
+            if (i < 15) {
+                if (v > 20) {
+                    var out = i + 10;
+                }
+                var out = i - 10;
+            }
+            //nasty nested if
+            //last line of code will always be executed
+            if (i < 15) {
+                if (v > 20) {
+                    var out = i + 10;
+                }
+            }
+            var out = i - 20;
+            //happy switch
+            switch (i) {
+            case 10:
+                var out = i + 20;
+                break;
+            case -10:
+                var out = i * 2;
+                break;
+            }
+            //nasty switch missing break (both cases exectuted)
+            switch (i) {
+            case 10:
+                var out = i + 20;
+            case -10:
+                var out = i * 2;
+            }
+
+            document.getElementById('output').innerHTML = out;
+        }
+    </script>
+</head>
+
+<body>
+    <button type="button" onclick="conditional()">conditional</button>
+    <div id="output"></div>
+</body>
+
+</html>

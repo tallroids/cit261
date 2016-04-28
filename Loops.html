@@ -5,71 +5,72 @@
     <meta charset="utf-8">
     <title>Loops</title>
     <script type="text/javascript">
-        
         function loop() {
             //happy path (for loop)
-            for(i=0; i<5; i++){
-                i+=i;
+            for (i = 0; i < 5; i++) {
+                i += i;
             }
-            
+
             //nasty paths
-            
+
             //invalid starting counter
-            for(i=6; i<5; i++){
-                i+=i;
+            for (i = 6; i < 5; i++) {
+                i += i;
             }
             //incorrect qualifier
-            for(i=0; i>5; i++){
-                i+=i;
+            for (i = 0; i > 5; i++) {
+                i += i;
             }
             //incorrect counter
-            for(i=0; i<5; i--){
-                i+=i;
+            for (i = 0; i < 5; i--) {
+                i += i;
             }
-            
+
             //missing parameters without being predefined            
-            for(;;){
-            }
-            
+            for (;;) {}
+
             //happy path (while loop)
-            i=0;
-            while(i<5){
-                i+=i;
+            i = 0;
+            while (i < 5) {
+                i += i;
                 i++;
             }
-            
+
             //nasty path
             //missing increment
-            while(i<5){
-                i+=i;
+            while (i < 5) {
+                i += i;
             }
-            
+
             //happy paths (for each loop)
-            var out="";
-            var object={a:1, b:2, c:3};
-            
-            for(var i in object){
-                out+=i +object[i]+ " ";
+            var out = "";
+            var object = {
+                a: 1,
+                b: 2,
+                c: 3
+            };
+
+            for (var i in object) {
+                out += i + object[i] + " ";
             }
-            
+
             //nasty paths
             //incorrect variable reference
-            for(var i in list){
-                out+=i +object[i]+ " ";
+            for (var i in list) {
+                out += i + object[i] + " ";
             }
             //results overwritten
-            for(var i in object){
-                out=i +object[i]+ " ";
+            for (var i in object) {
+                out = i + object[i] + " ";
             }
-            
-            document.getElementById('output').innerHTML=out;
+
+            document.getElementById('output').innerHTML = out;
         }
-        
     </script>
 </head>
 
 <body>
-     <button type="button" onclick="loop()">loop</button>
+    <button type="button" onclick="loop()">loop</button>
     <div id="output"></div>
 </body>
 
