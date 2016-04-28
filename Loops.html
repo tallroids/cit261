@@ -6,6 +6,7 @@
     <title>Loops</title>
     <script type="text/javascript">
         function loop() {
+            
             //happy path (for loop)
             for (i = 0; i < 5; i++) {
                 i += i;
@@ -26,8 +27,11 @@
                 i += i;
             }
 
-            //missing parameters without being predefined            
+            //missing parameters without being predefined       
             for (;;) {}
+            
+            //no semicolons**          
+            for () {}
 
             //happy path (while loop)
             i = 0;
@@ -40,6 +44,12 @@
             //missing increment
             while (i < 5) {
                 i += i;
+            }
+            
+            //empty param**
+            while () {
+                i += i;
+                i++;
             }
 
             //happy paths (for each loop)
@@ -55,13 +65,32 @@
             }
 
             //nasty paths
-            //incorrect variable reference
+            //incorrect variable reference  passing string function or null**
             for (var i in list) {
                 out += i + object[i] + " ";
             }
+            
             //results overwritten
             for (var i in object) {
                 out = i + object[i] + " ";
+            }
+            
+            //passing string (each character examined)**
+            var object = "Hello World!"
+            for (var i in object) {
+                out += i + object[i] + " ";
+            }
+            
+            //passing function
+            function object(){}
+            for (var i in object) {
+                out += i + object[i] + " ";
+            }
+            
+            //passing null
+            var object = null;
+            for (var i in object) {
+                out += i + object[i] + " ";
             }
 
             document.getElementById('output').innerHTML = out;

@@ -9,21 +9,30 @@
         var v = 20;
 
         function conditional() {
+            
             //happy if
             if (i < 15 || i > 20) {
                 var out = i + 10;
             }
+            
             //nasty ifs
             //impossible condition
             if (i < 15 && i > 20) {
                 var out = i + 10;
             }
+            
             //incorrect comparison
             if (i < 15 || i < 20) {
                 var out = i + 10;
             }
+            
             //inadvertent test faliure
             if (i < 15 ^ v == 20) {
+                var out = i + 10;
+            }
+
+            //empty case
+            if () {
                 var out = i + 10;
             }
 
@@ -33,6 +42,7 @@
             } else {
                 var out = i - 10;
             }
+            
             //nasty if else
             //var out not defined in second block
             if (i < 15) {
@@ -40,6 +50,7 @@
             } else {
                 out = i - 10;
             }
+            
             //happy nested if
             if (i < 15) {
                 if (v > 20) {
@@ -47,6 +58,7 @@
                 }
                 var out = i - 10;
             }
+            
             //nasty nested if
             //last line of code will always be executed
             if (i < 15) {
@@ -55,6 +67,7 @@
                 }
             }
             var out = i - 20;
+            
             //happy switch
             switch (i) {
             case 10:
@@ -64,12 +77,24 @@
                 var out = i * 2;
                 break;
             }
-            //nasty switch missing break (both cases exectuted)
+            
+            //nasty switch 
+            //missing break (both cases exectuted)
             switch (i) {
             case 10:
                 var out = i + 20;
             case -10:
                 var out = i * 2;
+            }
+            
+            //semicolon instead of colon
+            switch (i) {
+            case 10;
+            var out = i + 20;
+            break;
+            case -10;
+            var out = i * 2;
+            break;
             }
 
             document.getElementById('output').innerHTML = out;
