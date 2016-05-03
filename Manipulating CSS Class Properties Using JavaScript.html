@@ -5,18 +5,34 @@
     <meta charset="utf-8">
     <title>Manipulating CSS Class Properties Using JavaScript</title>
     <script type="text/javascript">
+        //happy path
         function css() {
+            document.getElementById('output').style.color='red';
             
+        //nasty paths
+            //missing quote marks in element selection
+            document.getElementById(output).style.color='red';
             
-
-            document.getElementById('output').innerHTML = out;
-        }
+            //missing quotes in style
+            document.getElementById('output').style.color=green;
+            
+            //missing # in hexcode
+            document.getElementById('output').style.color='123456';
+            
+            //missing style attribute selector
+            document.getElementById('output').color='red';
+            
+            //incorrect getElement selector
+            document.getElementsByTagName('output').style.color='red';
+            
+            }
+            
     </script>
 </head>
 
 <body>
-    <button type="button" onclick="css()">loop</button>
-    <div id="output"></div>
+    <button type="button" onclick="css()">test</button>
+    <div id="output">Hello</div>
 </body>
 
 </html>
