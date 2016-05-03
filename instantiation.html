@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <title>Loops</title>
+    <script type="text/javascript">
+        
+        //The constructor is a method of the class. In JavaScript 
+        //the function serves as the constructor of the object, 
+        //therefore there is no need to explicitly define a constructor method. 
+        //Every action declared in the class gets executed at the time of instantiation.
+        
+        //normal implementation
+        var person1 = new Person();
+        var person2 = new Person();
+        
+        
+        //both are good implementations to access method1
+        person1.method1();
+        person1["method1"]();
+        
+        var Person = function() {
+            
+            //this is bad since you do not want to display it every time you call the constructor
+            console.log('do not display');
+            this.a = 0;
+            this.b = 1;
+
+            this.method1 = function() {
+                // code for method1 here
+            }
+            
+            //this is a better implementation to use a display instance
+            this.display = function() {
+                console.log('display this')
+            }
+        };
+        
+        //BAD- is ok implementation, but slows down the code
+        var x = new String();        // Declares x as a String object
+        var y = new Number();        // Declares y as a Number object
+        var z = new Boolean();       // Declares z as a Boolean object
+
+        
+        
+    </script>
+</head>
+
+<body>
+     <button type="button" onclick="loop()">loop</button>
+    <div id="output"></div>
+</body>
+
+</html>
