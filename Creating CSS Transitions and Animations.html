@@ -4,42 +4,50 @@
     <meta charset="utf-8">
     <title>Creating CSS Transitions and Animations</title>
     <script type="text/javascript">
-        //happy path for transitions
+        
+        //happy path for color transitions
         function test() {
             var div = document.getElementById('output');
             div.style.color='red';
+            div.style.width='200px';
             div.style.transition='.3s';
-        //nasty paths
-            //missing quote marks in element selection
+            //happy path for sizing transitions
+
+            
+        //nasty paths for color
+            //incorrect variable
             var div = document.getElementById('output');
-            div.style.color='red';
-            div.style.transition='.3s';
+            wrong.style.color='red';
+            wrong.style.transition='.3s';
             
             //missing quotes in style
             var div = document.getElementById('output');
-            div.style.color='red';
+            div.style.color=red;
             div.style.transition='.3s';
             
-            //missing # in hexcode
+            //missing style attribute
+            var div = document.getElementById('output');
+            div.style='red';
+            div.style.transition='.3s';
+            
+            //incorrect attribute selected
+            var div = document.getElementById('output');
+            div.style.border='red';
+            div.style.transition='.3s';
+            
+            //nasty path for sizing transitions
             var div = document.getElementById('output');
             div.style.color='red';
             div.style.transition='.3s';
-            
-            //missing style attribute selector
-            var div = document.getElementById('output');
-            div.style.color='red';
-            div.style.transition='.3s';
-            
-            //incorrect getElement selector
-            document.getElementsByTagName('output').style.color='red';
-            
+        
+                        
             }
             
     </script>
 </head>
 
 <body>
-    <button type="button" onclick="test()">test</button>
-    <div id="output">Hello</div>
+    <button type="button" onclick="test()" >test</button>
+    <div id="output" style="background-color: pink">Hello</div>
 </body>
 </html>
