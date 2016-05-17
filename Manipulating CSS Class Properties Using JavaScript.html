@@ -5,9 +5,18 @@
     <meta charset="utf-8">
     <title>Manipulating CSS Class Properties Using JavaScript</title>
     <script type="text/javascript">
-        //happy path
+        
         function css() {
-            document.getElementById('output').style.color='red';
+        
+        //happy paths 
+            //color 
+            document.getElementById('output').style.backgroundColor='red';
+            
+            //positioning
+            document.getElementById('output').style.left='200px';
+            
+            //sizing
+            document.getElementById('output').style.width='200px';
             
         //nasty paths
             //missing quote marks in element selection
@@ -15,6 +24,12 @@
             
             //missing quotes in style
             document.getElementById('output').style.color=green;
+            
+            //null color
+            document.getElementById('output').style.color=null;
+            
+            //empty quotes
+            document.getElementById('output').style.color="";
             
             //missing # in hexcode
             document.getElementById('output').style.color='123456';
@@ -25,6 +40,18 @@
             //incorrect getElement selector
             document.getElementsByTagName('output').style.color='red';
             
+            //negative positioning accidently taking element off screen
+            document.getElementById('output').style.left='-100px';
+            
+            //null returned for positioning
+            document.getElementById('output').style.left=null;
+            
+            //no height declared
+            document.getElementById('output').style.height='';
+            
+            //negative height declared
+            document.getElementById('output').style.height='-200px';
+            
             }
             
     </script>
@@ -32,7 +59,7 @@
 
 <body>
     <button type="button" onclick="css()">test</button>
-    <div id="output">Hello</div>
+    <div id="output" style="background-color:blue; position: fixed">Hello</div>
 </body>
 
 </html>
