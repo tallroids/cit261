@@ -1,22 +1,72 @@
 <!doctype html>
 <html>
-<head>
-  <title>Template sanbox code</title>
-  <script>
-  
-      //happy paths
-      function test() {
-                        
 
-            document.getElementById('output').innerHTML = out;
+<head>
+    <title>Template sanbox code</title>
+    <script>
+        //happy paths
+        
+            //onload
+         window.onload = function () {
+            document.getElementById('img').innerHTML = "done loading";
+        
+            //onclick
+        document.getElementById('button').onclick = function () {
+                document.getElementById('out').innerHTML = "onclick used correctly";
+            }
+            //ontouch
+        document.getElementById('photo').ontouchstart = function () {
+                document.getElementById('div2').innerHTML = 'touch strarted';
+            }
+        document.getElementById('photo').ontouchmove = function () {
+                document.getElementById('div2').innerHTML = 'touch moving';
+            }
+        document.getElementById('photo').ontouchend = function () {
+                document.getElementById('div2').innerHTML = 'touch ended';
+            }
+        document.getElementById('photo').ontouchcancel = function () {
+                document.getElementById('div2').innerHTML = 'touch ended';
+            }
+        
+            //onbeforeunload
+        window.onbeforeunload = function () {
+                return 'You must not leave!!!';
+            }
+                   
+            //event on parent event
+        document.getElementById('outerDiv').onclick = function () {
+                document.getElementById('out').innerHTML = "onclick used correctly";
+            }
+            // turn off d-fault behavior
+        document.getElementById('hello').onclick = function (event) {
+            event.preventDefault();               
+            }
+        //nasty paths
+        
+        //wrong attribute
+        document.getElementById('button').click = function () {
+            document.getElementById('out').innerHTML = "onclick used correctly";
         }
-      //nasty paths
-  
-  </script>
+        
+        //onunload used instead without correct default behavior (return is for onbeforeunload)
+        window.onunload = function () {
+                return 'You must not leave!!!';
+            }
+            //onload declared before target created
+        }
+    </script>
 </head>
 
 <body>
-    <button type="button" onclick="test()">test</button>
-	<div id="out"></div>
+    <button type="button" id="button">test</button>
+    <div id="out"></div>
+    <img src="http://benharkerphoto.com/wp-content/uploads/2016/03/Movie-Poster-Final-Web.jpg" alt="blah" height=200 width=135 id="photo">
+    <p id="img"></p>
+    <div style="height: 200px; background-color: black" id=outerDiv>
+        <img src="https://byui.brightspace.com/d2l/lp/navbars/6606/theme/viewimage/14431/view?v=10.6.0.2348-10" id="pic" alt="this">
+    </div>
+    <a href="http://www.google.com" id=hello>Hello</a>
+    <div id="div2"></div>
 </body>
+
 </html>
