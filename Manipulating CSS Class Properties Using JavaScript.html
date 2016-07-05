@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <title>Manipulating CSS Class Properties Using JavaScript</title>
+    <script type="text/javascript">
+        
+        function css() {
+        
+        //happy paths 
+            //color 
+            document.getElementById('output').style.backgroundColor='red';
+            
+            //positioning
+            document.getElementById('output').style.left='200px';
+            
+            //sizing
+            document.getElementById('output').style.width='200px';
+            
+        //nasty paths
+            //missing quote marks in element selection
+            document.getElementById(output).style.color='red';
+            
+            //missing quotes in style
+            document.getElementById('output').style.color=green;
+            
+            //null color
+            document.getElementById('output').style.color=null;
+            
+            //empty quotes
+            document.getElementById('output').style.color="";
+            
+            //missing # in hexcode
+            document.getElementById('output').style.color='123456';
+            
+            //missing style attribute selector
+            document.getElementById('output').color='red';
+            
+            //incorrect getElement selector
+            document.getElementsByTagName('output').style.color='red';
+            
+            //negative positioning accidently taking element off screen
+            document.getElementById('output').style.left='-100px';
+            
+            //null returned for positioning
+            document.getElementById('output').style.left=null;
+            
+            //no height declared
+            document.getElementById('output').style.height='';
+            
+            //negative height declared
+            document.getElementById('output').style.height='-200px';
+            
+            }
+            
+    </script>
+</head>
+
+<body>
+    <button type="button" onclick="css()">test</button>
+    <div id="output" style="background-color:blue; position: fixed">Hello</div>
+</body>
+
+</html>

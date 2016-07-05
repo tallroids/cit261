@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+  <title>Array sanbox code</title>
+  <script>
+  
+      //happy list declaration
+      var list = [3,4,5,6];
+
+      
+      //good but not as preferred
+      var list = new Array(4,3,4);
+    
+      
+      //unexpected behavior of new Array()
+      var list = new Array(8,13); // equivalent to [8,13]
+      var list = new Array(8); //equivalent to [UNDF,UNDF,UNDF,UNDF,UNDF,UDNF,UNDF,UNDF]
+      
+      
+      //happy use of array indexes
+      list[0] = 0;
+      list[5] = "text";
+      list[list.length] = "yes";
+      
+      
+      //bad use of array indexes
+      list[-1] = 2; //arrays should not have negative indexes
+      list[20] = 5; //has not reached index 20 yet
+      list["two"] = 3; // associative arrays are not supported in JS
+
+      
+      //this is my happy path for push
+      list.push(9);
+      list.push('text');
+
+
+      //this is my nasty path for push
+      list.push(null);
+
+      
+    //array functions
+      //good way to use isArray()
+      var x = 9;
+      Array.isArray(list); // returns true
+      Array.isArray(x) // false
+      
+      
+      //bad way to use isArray
+      list.isArray(); //is not a function of list
+      
+      
+      //good way for .length
+      list.length;
+      
+      
+      //bad way for .length
+      Array.length(list);
+      
+      
+      document.getElementById("check").innerHTML = Array.isArray(list);
+  
+
+  </script>
+
+  <style>  </style>
+
+</head>
+
+<body>
+	<p>Hello</p>
+	<p id="check">Check</p>
+</body>
+</html>
